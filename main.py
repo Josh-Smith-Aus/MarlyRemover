@@ -18,10 +18,10 @@ async def on_message(message):
     if message.author == client.user:
         await message.delete(delay =3)
 
-    gloomChannel = 928882150995025961 #channel.id for gloomhaven    
+    gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639   
     msg_content = message.content.lower()
     marlyWord = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
-    Marly = 305289523619692544 #Marlys user ID = 332674954958995466, using mine for now
+    Marly = 332674954958995466 #Marlys user ID = 332674954958995466
 
     # delete curse word if match with the list
     if any(word in msg_content for word in marlyWord) and message.author.id == Marly and message.channel.id == gloomChannel:
