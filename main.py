@@ -1,3 +1,17 @@
+## Set up for DigitalOcean
+# Build Command
+#    -->   pip install -r requirements.txt 
+#  Run Command
+#    -->   python main.py
+# 
+# Run:
+#    pip3 freeze > requirements.txt
+#in terminal here to create requirements.txt file
+#
+#
+
+
+
 import discord
 import os
 import random
@@ -16,14 +30,14 @@ async def on_ready():
 async def on_message(message):
     
     if message.author == client.user:
-        await message.delete(delay =3)
+        await message.delete(delay =5)
 
     gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639   
     msg_content = message.content.lower()
     marlyWord = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
     Marly = 332674954958995466 #Marlys user ID = 332674954958995466
 
-    # delete curse word if match with the list
+    # check word if match with the list
     if any(word in msg_content for word in marlyWord) and message.author.id == Marly and message.channel.id == gloomChannel:
         await message.channel.send('Bad Marly! Leave them to play GloomHaven')
         await message.delete(delay =3)
