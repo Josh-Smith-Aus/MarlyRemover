@@ -59,7 +59,7 @@ async def on_message(message):
     
         #Add up?
         elif any(word in msg_content for word in marlyWord) and role in message.author.roles:
-            message.content += listForGloomVotes
+            listForGloomVotes += message.content
             sleep (5)
             await message.channel.send('The most common answer is % s' %(multimode(listForGloomVotes)))
             listForGloomVotes.clear()
