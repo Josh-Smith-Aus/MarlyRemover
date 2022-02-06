@@ -34,11 +34,6 @@ async def on_message(message):
     
     if message.author == client.user:
         await message.delete(delay =5)
-    return
-
-
-@client.event
-async def on_message(message):
     
     gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639   
     msg_content = message.content.lower()
@@ -65,6 +60,5 @@ async def on_message(message):
             sleep (5)
             await message.channel.send('The most common answer is % s' %(multimode(listFor)))
             listFor.clear()
-    return
 
 client.run(os.getenv('TOKEN'))
