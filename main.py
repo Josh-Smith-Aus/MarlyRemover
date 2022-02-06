@@ -47,7 +47,7 @@ async def on_message(message):
     if message.channel.id == gloomChannel and message.author != client.user:
    
         # check word if match send('Bad Marly! Leave them to play GloomHaven')
-        if any(word in msg_content for word in marlyWord) and message.author.id not in roleIdGloom:
+        if any(word in msg_content for word in marlyWord) and role not in roleIdGloom:
             await message.channel.send('Bad Marly! Leave them to play GloomHaven')
             await message.delete(delay =3)
         
@@ -66,7 +66,7 @@ async def on_message(message):
     
     #stop cash using main channel to vote in gloom
     if message.channel.id == mainChannelId and message.author == cashensId and any(word in msg_content for word in marlyWord):
-            await message.channel.send('Please post votes in Gllomhaven only Cash..')
+            await message.channel.send('Please post votes in Gloomhaven only Cash..')
             await message.delete(delay =3)
 
 
