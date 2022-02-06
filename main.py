@@ -49,7 +49,7 @@ async def on_message(message):
         # check word if match send('Bad Marly! Leave them to play GloomHaven')
         if any(word in msg_content for word in marlyWord) and role not in message.author.roles:
             await message.channel.send('Bad Marly! Leave them to play GloomHaven')
-            await message.delete(delay =3)
+            await message.delete()
         
         #Change 'Marlys' comments to random upper lower cased
         elif not all(word in msg_content for word in marlyWord) and role not in message.author.roles:
