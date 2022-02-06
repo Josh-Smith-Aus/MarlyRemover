@@ -35,30 +35,39 @@ async def on_message(message):
     if message.author == client.user:
         await message.delete(delay =5)
     
-    gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639   
+    gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639  
+    mainChannelId = 354205757131980804 
+    cashensId = 225196683347230720
     msg_content = message.content.lower()
     marlyWord = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
     roleIdGloom = 931329921190608927 #gloom role id 931329921190608927
     role = message.guild.get_role(roleIdGloom)
-    listFor = []
+    listForGloomVotes = []
    
     if message.channel.id == gloomChannel and message.author != client.user:
-        # check word if match with the list
-        if any(word in msg_content for word in marlyWord) and role not in message.author.roles: 
+   
+        # check word if match send('Bad Marly! Leave them to play GloomHaven')
+        if any(word in msg_content for word in marlyWord) and message.author.id not in roleIdGloom:
             await message.channel.send('Bad Marly! Leave them to play GloomHaven')
             await message.delete(delay =3)
         
         #Change 'Marlys' comments to random upper lower cased
-        elif any(word in msg_content for word in marlyWord) and role not in message.author.roles:
+        elif not all(word in msg_content for word in marlyWord) and role not in message.author.roles:
             await message.channel.send(''.join([char.lower() if random.randint(0,1) else char.upper() \
-                      for char in message.content]))
+                        for char in message.content]))
             await message.delete(delay =3)
-
+    
         #Add up?
         elif any(word in msg_content for word in marlyWord) and role in message.author.roles:
-            message.content += listFor
+            message.content += listForGloomVotes
             sleep (5)
-            await message.channel.send('The most common answer is % s' %(multimode(listFor)))
-            listFor.clear()
+            await message.channel.send('The most common answer is % s' %(multimode(listForGloomVotes)))
+            listForGloomVotes.clear()
+    
+    #stop cash using main channel to vote in gloom
+    if message.channel.id == mainChannelId and message.author == cashensId and any(word in msg_content for word in marlyWord):
+            await message.channel.send('Please post votes in Gllomhaven only Cash..')
+            await message.delete(delay =3)
+
 
 client.run(os.getenv('TOKEN'))
