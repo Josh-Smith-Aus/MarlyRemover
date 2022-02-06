@@ -65,10 +65,10 @@ async def on_message(message):
                 count += 1
                 print (listForGloomVotes)
                 print(count)
-                if count >= 4:
-                    await message.channel.send('The most common answer is ' %(multimode(listForGloomVotes)))
-                    listForGloomVotes.clear()
-                    count = 0
+            if count >= 4:
+                await message.channel.send('The most common answer is ' %(multimode(listForGloomVotes)))
+                listForGloomVotes.clear()
+                count = 0
                     
                     
     
