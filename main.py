@@ -35,18 +35,18 @@ async def on_message(message):
     gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639   
     msg_content = message.content.lower()
     marlyWord = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
-    Marly = 332674954958995466 #Marlys user ID = 332674954958995466
+    #Marly = 332674954958995466 #Marlys user ID = 332674954958995466
     RoleIdGloom = 928262721550565417 #gloom role id
     role = message.guild.get_role(RoleIdGloom)
 
 
     # check word if match with the list
-    if any(word in msg_content for word in marlyWord) and role not in message.author.roles and message.channel.id == gloomChannel:
+    if any(word in msg_content for word in marlyWord) and role not in message.author.roles and message.channel.id == gloomChannel and message.author != client.user:
         await message.channel.send('Bad Marly! Leave them to play GloomHaven')
         await message.delete(delay =3)
     
     #Change Marlys comments to random upper lower cased
-    elif not all(word in msg_content for word in marlyWord) and role not in message.author.roles and message.channel.id == gloomChannel:
+    elif not all(word in msg_content for word in marlyWord) and role not in message.author.roles and message.channel.id == gloomChannel and message.author != client.user:
         await message.channel.send(''.join([char.lower() if random.randint(0,1) else char.upper() \
                    for char in message.content]))
         await message.delete(delay =3)
