@@ -66,6 +66,7 @@ async def on_message(message):
                 print (listForGloomVotes)
                 print(count)
             if count >= 4:
+                print('keeps going')
                 await message.channel.send('The most common answer is ' %(multimode(listForGloomVotes)))
                 listForGloomVotes.clear()
                 count = 0
