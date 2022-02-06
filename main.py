@@ -60,16 +60,17 @@ async def on_message(message):
     
         #Add up
         elif any(word in msg_content for word in marlyWord) and role in message.author.roles:
-            while count < 3:
+            while count <= 5:
                 listForGloomVotes += message.content
                 count += 1
-                print(count)
                 print (listForGloomVotes)
-                if count >= 4:
+                print(count)
+                if count == 4:
                     await message.channel.send('The most common answer is ' %(multimode(listForGloomVotes)))
                     listForGloomVotes.clear()
                     count = 0
                     break
+                    
     
     #stop cash using main channel to vote in gloom
     if message.channel.id == mainChannelId and message.author == cashensId and any(word in msg_content for word in marlyWord):
