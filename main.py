@@ -36,7 +36,7 @@ async def on_message(message):
     msg_content = message.content.lower()
     marlyWord = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
     #Marly = 332674954958995466 #Marlys user ID = 332674954958995466
-    RoleIdGloom = 928262721550565417 #gloom role id
+    RoleIdGloom = 931329921190608927 #gloom role id 931329921190608927
     role = message.guild.get_role(RoleIdGloom)
 
 
