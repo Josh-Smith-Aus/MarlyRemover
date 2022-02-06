@@ -47,18 +47,18 @@ async def on_message(message):
     if message.channel.id == gloomChannel and message.author != client.user:
    
         # check word if match send('Bad Marly! Leave them to play GloomHaven')
-        if any(word in msg_content for word in marlyWord) and role not in roleIdGloom:
+        if any(word in msg_content for word in marlyWord) and message.author.id not in role:
             await message.channel.send('Bad Marly! Leave them to play GloomHaven')
             await message.delete(delay =3)
         
         #Change 'Marlys' comments to random upper lower cased
-        elif not all(word in msg_content for word in marlyWord) and role not in message.author.roles:
+        elif not all(word in msg_content for word in marlyWord) and message.author.id not in role:
             await message.channel.send(''.join([char.lower() if random.randint(0,1) else char.upper() \
                         for char in message.content]))
             await message.delete(delay =3)
     
         #Add up?
-        elif any(word in msg_content for word in marlyWord) and role in message.author.roles:
+        elif any(word in msg_content for word in marlyWord) and message.author.id in role:
             message.content += listForGloomVotes
             sleep (5)
             await message.channel.send('The most common answer is % s' %(multimode(listForGloomVotes)))
