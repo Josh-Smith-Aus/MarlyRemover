@@ -6,7 +6,7 @@
 # 
 # Run:
 #    pip3 freeze > requirements.txt
-#in terminal here to create requirements.txt file
+#    in terminal here(vscode) to create requirements.txt file
 #
 #
 
@@ -35,7 +35,7 @@ async def on_message(message):
     if message.author == client.user:
         await message.delete(delay =5)
     
-    gloomChannel = 928503396107972639 #channel.id for gloomhaven 928503396107972639  
+    gloomChannel = 939734076292759632 #channel.id for gloomhaven 928503396107972639  
     mainChannelId = 354205757131980804 
     cashensId = 225196683347230720
     msg_content = message.content.lower()
@@ -65,7 +65,7 @@ async def on_message(message):
                 count += 1
                 print (listForGloomVotes)
                 print(count)
-                if count == 4:
+                if count >= 4:
                     await message.channel.send('The most common answer is ' %(multimode(listForGloomVotes)))
                     listForGloomVotes.clear()
                     count = 0
